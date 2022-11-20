@@ -21,6 +21,7 @@ function register() {
 	$default_settings = [
 		'enabled' => true, // needs to be set
 	];
+	
 	$options = [
 		'defaults' => $default_settings,
 	];

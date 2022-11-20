@@ -34,15 +34,8 @@
             "inc/"
         ]
 	},
-	"repositories": [
-		{
-            "type": "git",
-            "url": "https://github.com/figuren-theater/ft-options"
-        }
-	],
 	"require": {
         "php": ">=7.1",
-        "figuren-theater/ft-options": "^1",
 		"humanmade/mercator": "^1.0",
 		"humanmade/mercator-gui": "dev-master",
         "koodimonni/composer-dropin-installer": "^1.4"
@@ -50,11 +43,13 @@
     "extra": {
         "altis": {
             "install-overrides": [
+                "humanmade/mercator",
+                "humanmade/mercator-gui"
             ]
         },
         "dropin-paths": {
             "content/": [
-                "package:figuren-theater/ft-routes:inc/sunrise.php"
+                "package:figuren-theater/ft-routes:templates/htdocs/wp-content/sunrise.php"
             ]
         }
     },
