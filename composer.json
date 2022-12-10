@@ -24,7 +24,8 @@
     },
 	"autoload": {
 		"files": [
-			"inc/mercator/namespace.php",
+			"inc/disable-public-json-rest-api/namespace.php",
+            "inc/mercator/namespace.php",
 			"inc/network_site_url-fix/namespace.php",
 			"inc/noblogredirect-fix/namespace.php",
 			"inc/virtual-uploads/namespace.php",

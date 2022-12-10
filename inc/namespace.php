@@ -45,12 +45,12 @@ function bootstrap() {
 	add_action( 'init', __NAMESPACE__ . '\\set_rewrite_bases', 0 );
 
 	// Plugins
-	//...\bootstrap();
+	Mercator\bootstrap();
 	
 	// Best practices
+	Disable_Public_JSON_REST_API\bootstrap();
 	Network_Site_Url_Fix\bootstrap();
 	Noblogredirect_Fix\bootstrap();
-	Mercator\bootstrap();
 	Virtual_Uploads\bootstrap();
 }
 
