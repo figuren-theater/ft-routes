@@ -28,7 +28,7 @@ function load() {
 	// add_filter( 'rest_endpoints', 'disable_all_except_some_endpoints' );
 	
 	// Disable some endpoints for unauthenticated users
-	add_filter( 'rest_endpoints', __NAMESPACE__ . '\\disable_default_endpoints' );
+	add_filter( 'rest_endpoints', __NAMESPACE__ . '\\disable_default_endpoints', 1000 );
 
 	// Remove REST API info from head and HTTP-headers
 	// taken from
@@ -147,7 +147,44 @@ function disable_default_endpoints( array $endpoints ) : array {
 
 		'/__experimental',
 		'/yoast',
-		
+		'/yoast/v1',
+		'/yoast/v1/file_size',
+		'/yoast/v1/statistics',
+		'/yoast/v1/alerts',
+		'/yoast/v1/configuration',
+		'/yoast/v1/import',
+		'/yoast/v1/indexing',
+		'/yoast/v1/link-indexing',
+		'/yoast/v1/integrations',
+		'/yoast/v1/meta',
+		'/yoast/v1/wincher',
+		'/yoast/v1/workouts',
+
+
+		'/koko-analytics/v1',
+		'/koko-analytics/v1/stats',
+		'/koko-analytics/v1/posts',
+		'/koko-analytics/v1/referrers',
+		'/koko-analytics/v1/settings',
+		'/koko-analytics/v1/realtime',
+		'/koko-analytics/v1/reset',
+
+		'/wp/v2/ft_theme',
+
+		'/wp/v2/ft_milestone',
+
+		'/wp/v2/ft_product',
+
+		'/wp-site-health/v1/tests',
+		'/wp-site-health/v1/directory-sizes',
+
+		'/wp-block-editor/v1',
+		'/wp-block-editor/v1/url-details',
+		'/wp-block-editor/v1/export',
+
+		'/wpmn/v1',
+		'/wpmn/v1/networks',
+
 		'/wp/v2/distributor',
 		'/wp/v2/dt_meta',
 		'/wp/v2/dt_subscription',
