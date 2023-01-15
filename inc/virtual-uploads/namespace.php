@@ -83,6 +83,15 @@ function bootstrap() {
  */
 function load() {
 
+/*
+add_action( 'admin_footer', function(){
+	// var_dump(generate_htaccess_rules());
+	// ft__media_mod_rewrite_rules();
+	\do_action( 'qm/debug', \get_option( 'upload_path' ) );
+	\do_action( 'qm/debug', \get_option( 'upload_url_path' ) );
+	\do_action( 'qm/debug', \wp_upload_dir() );
+} );
+*/
 	// filter (visible) URL path from
 	// assets.figuren.theater/uploads/site/(ID)/2022/03/some-image.jpg
 	// to a domain-specific folder called
@@ -133,23 +142,26 @@ function load() {
  * - /content/mu-plugins/FT/ft-routes/inc/virtual-uploads/namespace.php
  * - /content/mu-plugins/Figuren_Theater/src/FeaturesRepo/UtilityFeature__managed_core_options.php
  *
- * @package [package]
+ * @package figuren-theater/routes/virtual_uploads
+ * 
  * @since   2.10
+ * @since   3.0 Also set the values for 'basedir' and 'path'.
  *
  * @param  array $upload_dir [description]
  * 
  * @return array             [description]
  */
 function filter__upload_dir( array $upload_dir ) : array {
+	// for some reason, 
+	// the old 'blogs.dir' dropped in sometimes
+	// so remove it
+	$upload_dir['basedir'] = WP_CONTENT_DIR . '/uploads/sites/' . get_current_blog_id();
+	$upload_dir['path']    = $upload_dir['basedir'] . $upload_dir['subdir'];
+
 	$old_baseurl           = $upload_dir['baseurl'];
 	$upload_dir['baseurl'] = get_site_url( null, '/' . FOLDER, 'https' );
 	$upload_dir['url']     = str_replace( $old_baseurl, $upload_dir['baseurl'], $upload_dir['url'] );
 
-	// change default location for uploads of the primary blog
-	if ( 1 === get_current_blog_id() ) {
-		$upload_dir['basedir'] = WP_CONTENT_DIR . '/uploads/sites/1';
-		$upload_dir['path']    = $upload_dir['basedir'] . $upload_dir['subdir'];
-	}
 	return $upload_dir;
 }
 
@@ -393,11 +405,4 @@ function _is_subdir_install( string $url ) : string|bool {
 
 
 
-
-/*
-add_action( 'admin_footer', function(){
-	// var_dump(generate_htaccess_rules());
-	// ft__media_mod_rewrite_rules();
-	// \do_action( 'qm/debug', generate_htaccess_rules() );
-} );*/
 
