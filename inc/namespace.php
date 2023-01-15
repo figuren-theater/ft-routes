@@ -40,8 +40,6 @@ function register() {
  */
 function bootstrap() {
 
-
-
 	add_action( 'init', __NAMESPACE__ . '\\set_rewrite_bases', 0 );
 
 	// Plugins
@@ -49,7 +47,7 @@ function bootstrap() {
 	
 	// Best practices
 	Disable_Public_JSON_REST_API\bootstrap();
-	Network_Site_Url_Fix\bootstrap();
+	// Network_Site_Url_Fix\bootstrap(); // DISABLED for being done by the .htaccess
 	Noblogredirect_Fix\bootstrap();
 	Virtual_Uploads\bootstrap();
 }
