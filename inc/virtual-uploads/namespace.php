@@ -83,15 +83,7 @@ function bootstrap() {
  */
 function load() {
 
-/*
-add_action( 'admin_footer', function(){
-	// var_dump(generate_htaccess_rules());
-	// ft__media_mod_rewrite_rules();
-	\do_action( 'qm/debug', \get_option( 'upload_path' ) );
-	\do_action( 'qm/debug', \get_option( 'upload_url_path' ) );
-	\do_action( 'qm/debug', \wp_upload_dir() );
-} );
-*/
+
 	// filter (visible) URL path from
 	// assets.figuren.theater/uploads/site/(ID)/2022/03/some-image.jpg
 	// to a domain-specific folder called
