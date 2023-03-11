@@ -212,6 +212,14 @@ function disable_default_endpoints( array $endpoints ) : array {
 
 	];
 
+
+	/**
+	 * Filters the endpoints that will be removed from the default stack.
+	 *
+	 * @param array  $endpoints_to_remove List of REST API endpoints that will be made un-available to the public.
+	 */
+	$endpoints_to_remove = apply_filters( __NAMESPACE__ . '\\endpoints_to_remove', $endpoints_to_remove );
+
 	// $start1 = microtime(true);
 
 	$endpoints = array_filter( 
