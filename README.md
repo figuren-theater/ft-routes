@@ -27,7 +27,7 @@
 This is the long desc
 
 * [x] *list closed tracking-issues or `docs` files here*
-* [ ] Do you have any [ideas](/issues/new) ?
+* [ ] Do you have any [ideas](https://github.com/figuren-theater/ft-routes/issues/new) ?
 
 ## Background & Motivation
 
@@ -35,20 +35,10 @@ This is the long desc
 
 ## Install
 
-1. Add this repository to your `composer.json`
-```json
-"repositories": [
-    {
-        "type": "git",
-        "url": "https://github.com/figuren-theater/ft-routes"
-    }
-]
-```
-
-2. Install via command line
-```sh
-composer require figuren-theater/ft-routes
-```
+1. Install via command line
+	```sh
+	composer require figuren-theater/ft-routes
+	```
 
 ## Usage
 
@@ -101,14 +91,14 @@ Don't forget to give the project a star! Thanks again!
 
 ## Versioning
 
-We use [Semantic Versioning](http://semver.org/) for versioning. For the versions
-available, see the [tags on this repository](/tags).
+We use [Semantic Versioning](http://semver.org/). For the versions
+available, see the [tags on this repository](https://github.com/figuren-theater/ft-routes/tags).
 
 ## Authors
 
   - **Carsten Bach** - *Provided idea & code* - [figuren.theater/crew](https://figuren.theater/crew/)
 
-See also the list of [contributors](/contributors)
+See also the list of [contributors](https://github.com/figuren-theater/ft-routes/contributors)
 who participated in this project.
 
 ## License
