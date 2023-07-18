@@ -1,59 +1,54 @@
 {
 	"name": "figuren-theater/ft-routes",
 	"description": "Modern tales of browser headers, domains, mappings and its pathes. Including some (still needed) historic patches for a nice WordPress Multisite setup like figuren.theater.",
-    "homepage": "https://websites.fuer.figuren.theater",
-    "type": "wordpress-muplugin",
-    "keywords": ["wordpress", "routing", "domain-aliasing", "rewriting" ],
-    "license": "GPL-3.0-or-later",
-    "authors": [
-        {
-            "name": "figuren.theater",
-            "email": "info@figuren.theater"
-        },
-        {
-            "name": "Carsten Bach",
-            "email": "mail@carsten-bach.de",
-            "homepage": "https://carsten-bach.de",
-            "role": "Developer"
-        }
-    ],
-    "support": {
-        "email": "info@figuren.theater",
-        "issues": "https://github.com/figuren-theater/ft-routes/issues",
-        "source": "https://github.com/figuren-theater/ft-routes"
-    },
+	"license": "GPL-3.0-or-later",
+	"type": "wordpress-muplugin",
+	"keywords": [
+		"wordpress",
+		"routing",
+		"domain-aliasing",
+		"rewriting"
+	],
+	"authors": [
+		{
+			"name": "figuren.theater",
+			"email": "info@figuren.theater"
+		},
+		{
+			"name": "Carsten Bach",
+			"email": "mail@carsten-bach.de",
+			"homepage": "https://carsten-bach.de",
+			"role": "Developer"
+		}
+	],
+	"homepage": "https://websites.fuer.figuren.theater",
+	"support": {
+		"email": "info@figuren.theater",
+		"issues": "https://github.com/figuren-theater/ft-routes/issues",
+		"source": "https://github.com/figuren-theater/ft-routes"
+	},
+	"require": {
+		"php": ">=7.1",
+		"humanmade/mercator": "^1.0",
+		"humanmade/mercator-gui": "dev-master",
+		"koodimonni/composer-dropin-installer": "^1.4"
+	},
+	"require-dev": {
+		"figuren-theater/code-quality": "^0.6.6"
+	},
 	"autoload": {
+		"classmap": [
+			"inc/"
+		],
 		"files": [
 			"inc/disable-public-json-rest-api/namespace.php",
-            "inc/mercator/namespace.php",
+			"inc/mercator/namespace.php",
 			"inc/network_site_url-fix/namespace.php",
 			"inc/noblogredirect-fix/namespace.php",
 			"inc/virtual-uploads/namespace.php",
 			"inc/namespace.php"
-		],
-        "classmap": [
-            "inc/"
-        ]
+		]
 	},
-	"require": {
-        "php": ">=7.1",
-		"humanmade/mercator": "^1.0",
-		"humanmade/mercator-gui": "dev-master",
-        "koodimonni/composer-dropin-installer": "^1.4"
-	},
-    "extra": {
-        "altis": {
-            "install-overrides": [
-                "humanmade/mercator",
-                "humanmade/mercator-gui"
-            ]
-        },
-        "dropin-paths": {
-            "content/": [
-                "package:figuren-theater/ft-routes:templates/htdocs/wp-content/sunrise.php"
-            ]
-        }
-    },
 	"config": {
 		"allow-plugins": {
 			"composer/installers": true,
@@ -63,7 +58,17 @@
 			"ergebnis/composer-normalize": true
 		}
 	},
-	"require-dev": {
-		"figuren-theater/code-quality": "^0.6.6"
+	"extra": {
+		"altis": {
+			"install-overrides": [
+				"humanmade/mercator",
+				"humanmade/mercator-gui"
+			]
+		},
+		"dropin-paths": {
+			"content/": [
+				"package:figuren-theater/ft-routes:templates/htdocs/wp-content/sunrise.php"
+			]
+		}
 	}
 }
