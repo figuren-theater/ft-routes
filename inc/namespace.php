@@ -46,7 +46,7 @@ function bootstrap() {
 
 	// Best practices.
 	Disable_Public_JSON_REST_API\bootstrap();
-	// Network_Site_Url_Fix\bootstrap(); // DISABLED for being done by the .htaccess.
+	// @todo #9 This should|could be removed completely Network_Site_Url_Fix\bootstrap(); // DISABLED for being done by the .htaccess.
 	Noblogredirect_Fix\bootstrap();
 	Virtual_Uploads\bootstrap();
 }
