@@ -21,7 +21,7 @@
   </p>
 </div>
 
-## About 
+## About
 
 
 This is the long desc
@@ -60,7 +60,7 @@ Figuren_Theater::API\get_...()
 
 ## Plugins included
 
-This package contains the following plugins. 
+This package contains the following plugins.
 Thoose are completely managed by code and lack of their typical UI.
 
 * [Mercator](https://github.com/humanmade/Mercator/)
@@ -81,6 +81,8 @@ Accompaniying the core functionality of the mentioned plugins, theese **best pra
 ## Built with & uses
 
   - [dependabot](/.github/dependabot.yml)
+  - [code-quality](https://github.com/figuren-theater/code-quality/)
+     A set of status checks to ensure high and consitent code-quality for the figuren.theater platform.
   - ....
 
 ## Contributing
@@ -111,7 +113,7 @@ who participated in this project.
 
 ## License
 
-This project is licensed under the [GPL-3.0-or-later](LICENSE.md), see the [LICENSE](LICENSE) file for
+This project is licensed under the **GPL-3.0-or-later**, see the [LICENSE](/LICENSE) file for
 details
 
 ## Acknowledgments
