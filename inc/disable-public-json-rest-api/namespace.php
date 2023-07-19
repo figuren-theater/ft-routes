@@ -103,14 +103,14 @@ function load() :void {
 /**
  * Filters the array of available REST API endpoints.
  *
- * AGAIN inspired by the great staclkoverflow-post
- * change the filter tzo make it a little less forcing
+ * AGAIN inspired by the great stackoverflow-post
+ * change the filter to make it a little less forcing
  *
  * Disable some endpoints for unauthenticated users.
  *
- * @param array<string, array> $endpoints The available endpoints. An array of matching regex patterns, each mapped to an array of callbacks for the endpoint. These take the format or `'/path/regex' => array( array( $callback, $bitmask ).
+ * @param array<string, mixed> $endpoints The available endpoints. An array of matching regex patterns, each mapped to an array of callbacks for the endpoint. These take the format or `'/path/regex' => array( array( $callback, $bitmask ).
  *
- * @return array<string, array> $endpoints
+ * @return array<string, mixed> $endpoints
  */
 function disable_default_endpoints( array $endpoints ) :array {
 

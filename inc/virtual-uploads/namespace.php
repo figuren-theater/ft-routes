@@ -8,21 +8,19 @@
 namespace Figuren_Theater\Routes\Virtual_Uploads;
 
 use ABSPATH;
-
 use FT_ROOT_DIR;
 use function add_action;
-
 use function add_filter;
 use function apply_filters;
-
 use function get_current_blog_id;
 use function get_sites;
 use function get_site_url;
 use function got_mod_rewrite;
 use function insert_with_markers;
 use function is_super_admin;
-use function Mapping\get_by_site;
+use function is_wp_error;
 use function wp_list_pluck;
+use Mercator;
 use WP_CONTENT_DIR;
 
 /**
@@ -44,8 +42,10 @@ const FOLDER = '__media';
 
 /**
  * Bootstrap module, when enabled.
+ *
+ * @return void
  */
-function bootstrap() {
+function bootstrap() :void {
 
 	add_action( 'init', __NAMESPACE__ . '\\load', 0 );
 }
@@ -77,8 +77,10 @@ function bootstrap() {
  * );
  *
  * add_rewrite_rule('^uploads/([^/]*)?','content/uploads/sites/'.get_current_blog_id().'/$1','top');
+ *
+ * @return void
  */
-function load() {
+function load() :void {
 	/*
 	 * filter (visible) URL path from
 	 *    assets.figuren.theater/uploads/site/(ID)/2022/03/some-image.jpg
@@ -130,16 +132,29 @@ function load() {
  * - /content/mu-plugins/FT/ft-routes/inc/virtual-uploads/namespace.php
  * - /content/mu-plugins/Figuren_Theater/src/FeaturesRepo/UtilityFeature__managed_core_options.php
  *
- * @package figuren-theater/routes/virtual_uploads
+ * @package figuren-theater/ft-routes
+ */
+
+/**
+ * Filters the uploads directory data.
  *
  * @since   2.10
  * @since   3.0 Also set the values for 'basedir' and 'path'.
  *
- * @param  array $upload_dir [description]
+ * @param array<mixed> $upload_dir {
+ *     Array of information about the upload directory.
  *
- * @return array             [description]
+ *     @type string       $path    Base directory and subdirectory or full path to upload directory.
+ *     @type string       $url     Base URL and subdirectory or absolute URL to upload directory.
+ *     @type string       $subdir  Subdirectory if uploads use year/month folders option is on.
+ *     @type string       $basedir Path without subdir.
+ *     @type string       $baseurl URL path without subdir.
+ *     @type string|false $error   False or error message.
+ * }
+ *
+ * @return array<mixed>  Updated array of information about the upload directory.
  */
-function filter__upload_dir( array $upload_dir ) : array {
+function filter__upload_dir( array $upload_dir ) :array {
 	// For some unresearched reasons,
 	// the old 'blogs.dir' 'dropped in' sometimes,
 	// so remove it.
@@ -166,9 +181,9 @@ function filter__upload_dir( array $upload_dir ) : array {
  *
  * @since 1.5.0
  *
- * @return bool|null True on write success, false on failure.
+ * @return void
  */
-function update_htaccess() {
+function update_htaccess() :void {
 
 	if ( ! is_super_admin() ) {
 		return;
@@ -184,12 +199,12 @@ function update_htaccess() {
 	 * to update the root .htaccess file.
 	 */
 	if ( ! can_update_htaccess( $htaccess_file ) ) {
-		return false;
+		return;
 	}
 
 	add_filter( 'insert_with_markers_inline_instructions', __NAMESPACE__ . '\\htaccess_instructions', 10, 2 );
 
-	return insert_with_markers(
+	insert_with_markers(
 		$htaccess_file,
 		__NAMESPACE__,
 		explode( "\n", generate_htaccess_rules() )
@@ -245,10 +260,10 @@ function can_update_htaccess( string $htaccess ) : bool {
  * @package [package]
  * @since   2.11
  *
- * @param   array  $instructions Array of comment lines to add next to our htaccess rules.
- * @param   string $marker       Name of the marker referenced.
+ * @param   array<string> $instructions Array of comment lines to add next to our htaccess rules.
+ * @param   string        $marker       Name of the marker referenced.
  *
- * @return  array                Unchanged, but un-localised default text.
+ * @return  array<string>               Unchanged, but un-localised default text.
  */
 function htaccess_instructions( array $instructions, string $marker ) : array {
 	return [
@@ -340,11 +355,11 @@ function generate_htaccess_rules() : string {
  * @return string The generated domain rule.
  */
 function generate_domain_rule( int $site_id, string $domain ) : string {
-	$mappings = \Mercator\Mapping::get_by_site( $site_id );
+	$mappings = Mercator\Mapping::get_by_site( $site_id );
 	$rules    = '';
 
 	// Check if there are mappings for the site.
-	if ( ! empty( $mappings ) ) {
+	if ( ! empty( $mappings ) && ! is_wp_error( $mappings ) ) {
 		foreach ( $mappings as $mapping ) {
 			// Append each mapping domain as a RewriteCond rule to the rules string.
 			$rules .= 'RewriteCond %{HTTP_HOST} ^' . _mask( $mapping->get_domain() ) . "\.(.*)$ [NC,OR]\n";

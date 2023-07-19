@@ -13,6 +13,7 @@ use function add_filter;
 use function get_current_blog_id;
 use function get_option;
 use function is_main_site;
+use function is_wp_error;
 use Mercator;
 
 /**
@@ -66,8 +67,14 @@ function canonical_urls_for_aliases( string $original_url ) : string {
 		$mapped_site_domain = $current_mapping->get_domain();
 	}
 
-	$url_wo_scheme = str_replace( [ 'https://', 'http://' ], '', get_option( 'siteurl', '' ) );
-	$canonical_url = str_replace( $mapped_site_domain, $url_wo_scheme, $original_url );
+	$unmapped_domain = get_option( 'siteurl' );
+
+	if ( ! \is_string( $unmapped_domain ) ) {
+		return $original_url;
+	}
+
+	$url_wo_scheme   = str_replace( [ 'https://', 'http://' ], '', $unmapped_domain );
+	$canonical_url   = str_replace( $mapped_site_domain, $url_wo_scheme, $original_url );
 
 	return $canonical_url;
 }
@@ -82,7 +89,7 @@ function canonical_urls_for_aliases( string $original_url ) : string {
  *
  * @param  string        $site_cleared_url     Full URL of the site cleared.
  * @param  int           $site_cleared_id      Post ID of the site cleared.
- * @param  array[mixed]  $cache_cleared_index  Index of the cache cleared.
+ * @param  array<mixed>  $cache_cleared_index  Index of the cache cleared.
  *
  * @return void
  */
@@ -90,20 +97,19 @@ function clear_alias_site_cache( string $site_cleared_url, int $site_cleared_id,
 
 	$mappings = Mercator\Mapping::get_by_site( $site_cleared_id );
 
-	if ( ! empty( $mappings ) && ! \is_wp_error( $mappings ) ) {
+	if ( empty( $mappings ) || is_wp_error( $mappings ) ) {
+		return;
+	}
 
-		$args = [];
+	$args = [];
 
-		foreach ( $mappings as $mapping ) {
-			if ( is_array( $args ) ) {
-				$args['subpages']['exclude'] = [];
+	foreach ( $mappings as $mapping ) {
+		$args['subpages']['exclude'] = [];
+		$args['hooks']['include'] = 'cache_enabler_site_cache_cleared__ft_alias';
 
-				if ( ! isset( $args['hooks']['include'] ) ) {
-					$args['hooks']['include'] = 'cache_enabler_site_cache_cleared__ft_alias';
-				}
-			}
-
-			Cache_Enabler::clear_page_cache_by_url( $mapping->get_domain(), $args );
-		}
+		Cache_Enabler::clear_page_cache_by_url(
+			$mapping->get_domain(),
+			$args
+		);
 	}
 }

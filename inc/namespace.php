@@ -14,8 +14,10 @@ use function apply_filters;
 
 /**
  * Register module.
+ *
+ * @return void
  */
-function register() {
+function register() :void {
 
 	$default_settings = [
 		'enabled' => true, // Needs to be set.
@@ -36,8 +38,10 @@ function register() {
 
 /**
  * Bootstrap module, when enabled.
+ *
+ * @return void
  */
-function bootstrap() {
+function bootstrap() :void {
 
 	add_action( 'init', __NAMESPACE__ . '\\set_rewrite_bases', 0 );
 
@@ -54,14 +58,14 @@ function bootstrap() {
 /**
  * [set_rewrite_base description]
  *
- * @global  WP_Rewrite $wp_rewrite WordPress rewrite component.
+ * @global WP_Rewrite $wp_rewrite WordPress rewrite component.
  */
 function set_rewrite_bases() : void {
 
 	/**
 	 * Replace default rewrite bases esp. for german-speaking websites.
 	 *
-	 * @param array<string, string> Rewrite key and human-readable rewrite replacement.
+	 * @param array $ft_rr Rewrite key and human-readable rewrite replacement.
 	 */
 	$ft_rr = apply_filters(
 		__NAMESPACE__ . '\\rewrite_bases',

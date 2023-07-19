@@ -13,8 +13,10 @@ use function add_filter;
 
 /**
  * Bootstrap module, when enabled.
+ *
+ * @return void
  */
-function bootstrap() {
+function bootstrap() :void {
 
 	// Fix network admin URL to include the "/wp/" base.
 	add_filter( 'network_site_url', __NAMESPACE__ . '\\network_site_url_incl_wp', 10, 3 );

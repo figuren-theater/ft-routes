@@ -18,8 +18,10 @@ use NOBLOGREDIRECT;
  * Bootstrap module, when enabled.
  *
  * @see  http://frumph.net/wordpress/wordpress-3-0-multisite-subdomain-installation-noblogredirect-behavior-fix/
+ *
+ * @return void
  */
-function bootstrap() {
+function bootstrap() :void {
 
 	if ( defined( 'NOBLOGREDIRECT' ) && NOBLOGREDIRECT ) {
 		/**

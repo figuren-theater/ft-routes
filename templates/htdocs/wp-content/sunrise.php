@@ -17,7 +17,7 @@ declare(strict_types=1);
 $_ft_mercator_path = FT_VENDOR_DIR . '/humanmade/';
 
 /**
- * When trying to log in with an aliased domain, cookie domain is incorrect. 
+ * When trying to log in with an aliased domain, cookie domain is incorrect.
  * Probably Mercator\SSO\initialize_cookie_domain needs to run whether SSO is disabled or not,
  * currently it will not load if sso is disabled.
  *
