@@ -36,9 +36,6 @@
 	"require-dev": {
 		"figuren-theater/code-quality": "*"
 	},
-	"provide": {
-		"humanmade/mercator": "1.0.3"
-	},
 	"suggest": {
 		"wpackagist-plugin/cache-enabler": "Allow the cache-deletion of (Mercator) aliased domains."
 	},
