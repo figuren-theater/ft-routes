@@ -29,12 +29,15 @@
 	},
 	"require": {
 		"php": ">=7.1",
-		"humanmade/mercator": "^1.0",
+		"humanmade/mercator": "dev-master",
 		"humanmade/mercator-gui": "dev-master",
 		"koodimonni/composer-dropin-installer": "^1.4"
 	},
 	"require-dev": {
 		"figuren-theater/code-quality": "*"
+	},
+	"provide": {
+		"humanmade/mercator": "1.0.3"
 	},
 	"autoload": {
 		"classmap": [
