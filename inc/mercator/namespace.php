@@ -7,7 +7,6 @@
 
 namespace Figuren_Theater\Routes\Mercator;
 
-use Cache_Enabler;
 use function add_action;
 use function add_filter;
 use function get_current_blog_id;
@@ -102,13 +101,23 @@ function clear_alias_site_cache( string $site_cleared_url, int $site_cleared_id,
 		return;
 	}
 
+	if ( ! \class_exists( 'Cache_Enabler' ) ) {
+		return;
+	}
+
+	$cache_enabler = new \Cache_Enabler;
+
+	if ( ! \method_exists( $cache_enabler, 'clear_page_cache_by_url' ) ) {
+		return;
+	}
+
 	$args = [];
 
 	foreach ( $mappings as $mapping ) {
 		$args['subpages']['exclude'] = [];
 		$args['hooks']['include'] = 'cache_enabler_site_cache_cleared__ft_alias';
 
-		Cache_Enabler::clear_page_cache_by_url(
+		$cache_enabler::clear_page_cache_by_url(
 			$mapping->get_domain(),
 			$args
 		);

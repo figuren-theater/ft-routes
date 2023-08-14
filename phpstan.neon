@@ -21,6 +21,10 @@ parameters:
             - wp-content/
             - tests/
     ignoreErrors:
+		# The 'Cache Enabler' will be avail. on the ft platform.
+		# If the plugin does not exist, nothing will happen.
+		# Just silence.
+		# The plugin-installation is suggested via composer.
+        # - '#Call to static method clear_page_cache_by_url\(\) on an unknown class Cache_Enabler\.#'
         # Find a nicer way instead of ignoring this Error on every ft-module
         - '#Function Altis\\register_module not found\.#'
-        # - '#Function Figuren_Theater\\get_config not found\.#'
