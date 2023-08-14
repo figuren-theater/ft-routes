@@ -359,11 +359,13 @@ function generate_domain_rule( int $site_id, string $domain ) : string {
 	$rules    = '';
 
 	// Check if there are mappings for the site.
-	if ( ! empty( $mappings ) && ! is_wp_error( $mappings ) ) {
-		foreach ( $mappings as $mapping ) {
-			// Append each mapping domain as a RewriteCond rule to the rules string.
-			$rules .= 'RewriteCond %{HTTP_HOST} ^' . _mask( $mapping->get_domain() ) . "\.(.*)$ [NC,OR]\n";
-		}
+	if ( empty( $mappings ) || is_wp_error( $mappings ) ) {
+		return '';
+	}
+
+	foreach ( $mappings as $mapping ) {
+		// Append each mapping domain as a RewriteCond rule to the rules string.
+		$rules .= 'RewriteCond %{HTTP_HOST} ^' . _mask( $mapping->get_domain() ) . "\.(.*)$ [NC,OR]\n";
 	}
 
 	// Append the domain itself as a RewriteCond rule to the rules string.

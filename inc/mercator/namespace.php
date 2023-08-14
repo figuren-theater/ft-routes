@@ -50,21 +50,21 @@ function filter_canonical_urls_for_aliases() : void {
  */
 function canonical_urls_for_aliases( string $original_url ) : string {
 
+	if ( ! is_main_site() ) {
+		return $original_url;
+	}
+
 	$site_id            = get_current_blog_id();
 	$current_mapping    = ( isset( $GLOBALS['mercator_current_mapping'] ) ) ? $GLOBALS['mercator_current_mapping'] : '';
 	$mapped_site_domain = parse_url( $original_url ); // As a fallback.
 	$mapped_site_domain = ( isset( $mapped_site_domain['host'] ) ) ? $mapped_site_domain['host'] : '';
 
-	if ( empty( $current_mapping ) && ! is_main_site() ) {
+	if ( ! $current_mapping instanceof Mercator\Mapping ) {
 		return $original_url;
 	}
 
-	if ( is_object( $current_mapping ) && $site_id !== $current_mapping->get_site_id() ) {
+	if ( $site_id !== $current_mapping->get_site_id() ) {
 		return $original_url;
-	}
-
-	if ( is_object( $current_mapping ) ) {
-		$mapped_site_domain = $current_mapping->get_domain();
 	}
 
 	$unmapped_domain = get_option( 'siteurl' );
@@ -73,8 +73,9 @@ function canonical_urls_for_aliases( string $original_url ) : string {
 		return $original_url;
 	}
 
-	$url_wo_scheme   = str_replace( [ 'https://', 'http://' ], '', $unmapped_domain );
-	$canonical_url   = str_replace( $mapped_site_domain, $url_wo_scheme, $original_url );
+	$url_wo_scheme      = str_replace( [ 'https://', 'http://' ], '', $unmapped_domain );
+	$mapped_site_domain = $current_mapping->get_domain();
+	$canonical_url      = str_replace( $mapped_site_domain, $url_wo_scheme, $original_url );
 
 	return $canonical_url;
 }
