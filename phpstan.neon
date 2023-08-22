@@ -1,0 +1,26 @@
+#$ vendor/bin/phpstan analyze
+
+parameters:
+    level: max
+    inferPrivatePropertyTypeFromConstructor: true
+    paths:
+        - inc/
+        - templates/
+        - plugin.php
+    scanDirectories:
+        # thoose are ususally loaded via sunrise.php
+        # and are not part of any autoloader
+        - wp-content/mu-plugins/mercator/
+        - wp-content/mu-plugins/mercator-gui/
+    excludePaths:
+        analyse:
+            - vendor/
+            # "/wp-content/" is created during composer install,
+            # when package is tested
+            # and not running within ft-platform
+            - wp-content/
+            - tests/
+    ignoreErrors:
+        # Find a nicer way instead of ignoring this Error on every ft-module
+        - '#Constant WP_CONTENT_DIR not found\.#'
+        - '#Function Altis\\register_module not found\.#'

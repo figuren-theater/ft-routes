@@ -21,13 +21,13 @@
   </p>
 </div>
 
-## About 
+## About
 
 
 This is the long desc
 
 * [x] *list closed tracking-issues or `docs` files here*
-* [ ] Do you have any [ideas](/issues/new) ?
+* [ ] Do you have any [ideas](https://github.com/figuren-theater/ft-routes/issues/new) ?
 
 ## Background & Motivation
 
@@ -35,20 +35,10 @@ This is the long desc
 
 ## Install
 
-1. Add this repository to your `composer.json`
-```json
-"repositories": [
-    {
-        "type": "git",
-        "url": "https://github.com/figuren-theater/ft-routes"
-    }
-]
-```
-
-2. Install via command line
-```sh
-composer require figuren-theater/ft-routes
-```
+1. Install via command line
+	```sh
+	composer require figuren-theater/ft-routes
+	```
 
 ## Usage
 
@@ -60,12 +50,12 @@ Figuren_Theater::API\get_...()
 
 ## Plugins included
 
-This package contains the following plugins. 
+This package contains the following plugins.
 Thoose are completely managed by code and lack of their typical UI.
 
 * [Mercator](https://github.com/humanmade/Mercator/)
    WordPress multisite domain mapping for the modern era.
-* [Mercator GUI](https://github.com/humanmade/Mercator-GUI)
+* ~~[Mercator GUI](https://github.com/humanmade/Mercator-GUI)~~ [Mercator-GUI](https://github.com/carstingaxion/Mercator-GUI)
    A GUI component for Mercator domain mapping
 
 ## What does this package do in addition?
@@ -81,6 +71,8 @@ Accompaniying the core functionality of the mentioned plugins, theese **best pra
 ## Built with & uses
 
   - [dependabot](/.github/dependabot.yml)
+  - [code-quality](https://github.com/figuren-theater/code-quality/)
+     A set of status checks to ensure high and consitent code-quality for the figuren.theater platform.
   - ....
 
 ## Contributing
@@ -99,19 +91,19 @@ Don't forget to give the project a star! Thanks again!
 
 ## Versioning
 
-We use [Semantic Versioning](http://semver.org/) for versioning. For the versions
-available, see the [tags on this repository](/tags).
+We use [Semantic Versioning](http://semver.org/). For the versions
+available, see the [tags on this repository](https://github.com/figuren-theater/ft-routes/tags).
 
 ## Authors
 
   - **Carsten Bach** - *Provided idea & code* - [figuren.theater/crew](https://figuren.theater/crew/)
 
-See also the list of [contributors](/contributors)
+See also the list of [contributors](https://github.com/figuren-theater/ft-routes/contributors)
 who participated in this project.
 
 ## License
 
-This project is licensed under the [GPL-3.0-or-later](LICENSE.md), see the [LICENSE](LICENSE) file for
+This project is licensed under the **GPL-3.0-or-later**, see the [LICENSE](/LICENSE) file for
 details
 
 ## Acknowledgments

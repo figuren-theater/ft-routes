@@ -9,7 +9,7 @@
  * Domain Path:     /languages
  * Version:         1.0.8
  *
- * @package         figuren-theater/routes
+ * @package         figuren-theater/ft-routes
  */
 
 namespace Figuren_Theater\Routes;
