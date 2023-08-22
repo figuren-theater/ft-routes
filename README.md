@@ -55,7 +55,7 @@ Thoose are completely managed by code and lack of their typical UI.
 
 * [Mercator](https://github.com/humanmade/Mercator/)
    WordPress multisite domain mapping for the modern era.
-* [Mercator GUI](https://github.com/humanmade/Mercator-GUI)
+* ~~[Mercator GUI](https://github.com/humanmade/Mercator-GUI)~~ [Mercator-GUI](https://github.com/carstingaxion/Mercator-GUI)
    A GUI component for Mercator domain mapping
 
 ## What does this package do in addition?
