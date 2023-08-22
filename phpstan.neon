@@ -10,8 +10,8 @@ parameters:
     scanDirectories:
         # thoose are ususally loaded via sunrise.php
         # and are not part of any autoloader
-        - vendor/humanmade/mercator/
-        - vendor/humanmade/mercator-gui/
+        - wp-content/mu-plugins/mercator/
+        - wp-content/mu-plugins/mercator-gui/
     excludePaths:
         analyse:
             - vendor/
@@ -22,4 +22,5 @@ parameters:
             - tests/
     ignoreErrors:
         # Find a nicer way instead of ignoring this Error on every ft-module
+        - '#Constant WP_CONTENT_DIR not found\.#'
         - '#Function Altis\\register_module not found\.#'
