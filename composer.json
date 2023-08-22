@@ -39,6 +39,12 @@
 	"suggest": {
 		"wpackagist-plugin/cache-enabler": "Allow the cache-deletion of (Mercator) aliased domains."
 	},
+	"repositories": [
+		{
+			"type": "git",
+			"url": "https://github.com/carstingaxion/Mercator-GUI"
+		}
+	],
 	"autoload": {
 		"classmap": [
 			"inc/"

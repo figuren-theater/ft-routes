@@ -4,43 +4,41 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cd2a5ff428378cc35f5d7a06ded08b34",
+    "content-hash": "b6327152d27baf8f64f1dc92f57adfb5",
     "packages": [
         {
             "name": "composer/installers",
-            "version": "v1.12.0",
+            "version": "v2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "d20a64ed3c94748397ff5973488761b22f6d3f19"
+                "reference": "c29dc4b93137acb82734f672c37e029dfbd95b35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/d20a64ed3c94748397ff5973488761b22f6d3f19",
-                "reference": "d20a64ed3c94748397ff5973488761b22f6d3f19",
+                "url": "https://api.github.com/repos/composer/installers/zipball/c29dc4b93137acb82734f672c37e029dfbd95b35",
+                "reference": "c29dc4b93137acb82734f672c37e029dfbd95b35",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "^1.0 || ^2.0"
-            },
-            "replace": {
-                "roundcube/plugin-installer": "*",
-                "shama/baton": "*"
+                "composer-plugin-api": "^1.0 || ^2.0",
+                "php": "^7.2 || ^8.0"
             },
             "require-dev": {
                 "composer/composer": "1.6.* || ^2.0",
                 "composer/semver": "^1 || ^3",
                 "phpstan/phpstan": "^0.12.55",
                 "phpstan/phpstan-phpunit": "^0.12.16",
-                "symfony/phpunit-bridge": "^4.2 || ^5",
-                "symfony/process": "^2.3"
+                "symfony/phpunit-bridge": "^5.3",
+                "symfony/process": "^5"
             },
             "type": "composer-plugin",
             "extra": {
                 "class": "Composer\\Installers\\Plugin",
                 "branch-alias": {
-                    "dev-main": "1.x-dev"
-                }
+                    "dev-main": "2.x-dev"
+                },
+                "plugin-modifies-install-path": true
             },
             "autoload": {
                 "psr-4": {
@@ -61,7 +59,6 @@
             "description": "A multi-framework Composer library installer",
             "homepage": "https://composer.github.io/installers/",
             "keywords": [
-                "Craft",
                 "Dolibarr",
                 "Eliasis",
                 "Hurad",
@@ -82,7 +79,6 @@
                 "Whmcs",
                 "WolfCMS",
                 "agl",
-                "aimeos",
                 "annotatecms",
                 "attogram",
                 "bitrix",
@@ -101,7 +97,6 @@
                 "grav",
                 "installer",
                 "itop",
-                "joomla",
                 "known",
                 "kohana",
                 "laravel",
@@ -110,6 +105,7 @@
                 "magento",
                 "majima",
                 "mako",
+                "matomo",
                 "mediawiki",
                 "miaoxing",
                 "modulework",
@@ -129,9 +125,7 @@
                 "silverstripe",
                 "sydes",
                 "sylius",
-                "symfony",
                 "tastyigniter",
-                "typo3",
                 "wordpress",
                 "yawik",
                 "zend",
@@ -139,7 +133,7 @@
             ],
             "support": {
                 "issues": "https://github.com/composer/installers/issues",
-                "source": "https://github.com/composer/installers/tree/v1.12.0"
+                "source": "https://github.com/composer/installers/tree/v2.2.0"
             },
             "funding": [
                 {
@@ -155,7 +149,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-09-13T08:19:44+00:00"
+            "time": "2022-08-20T06:45:11+00:00"
         },
         {
             "name": "humanmade/mercator",
@@ -163,12 +157,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/humanmade/Mercator.git",
-                "reference": "9240e7cce9882a9fe452ced8a5cf7845d60c5a2e"
+                "reference": "f8aeab973c4c1b6b5582318cd1a9bd3f2e2a0755"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/humanmade/Mercator/zipball/9240e7cce9882a9fe452ced8a5cf7845d60c5a2e",
-                "reference": "9240e7cce9882a9fe452ced8a5cf7845d60c5a2e",
+                "url": "https://api.github.com/repos/humanmade/Mercator/zipball/f8aeab973c4c1b6b5582318cd1a9bd3f2e2a0755",
+                "reference": "f8aeab973c4c1b6b5582318cd1a9bd3f2e2a0755",
                 "shasum": ""
             },
             "require": {
@@ -196,29 +190,22 @@
                 "issues": "https://github.com/humanmade/Mercator/issues",
                 "source": "https://github.com/humanmade/Mercator/tree/master"
             },
-            "time": "2022-04-19T09:21:22+00:00"
+            "time": "2023-08-22T09:34:46+00:00"
         },
         {
             "name": "humanmade/mercator-gui",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/humanmade/Mercator-GUI.git",
-                "reference": "cb9046a6ca766f52498dee2010087f60ed8649ef"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/humanmade/Mercator-GUI/zipball/cb9046a6ca766f52498dee2010087f60ed8649ef",
-                "reference": "cb9046a6ca766f52498dee2010087f60ed8649ef",
-                "shasum": ""
+                "url": "https://github.com/carstingaxion/Mercator-GUI",
+                "reference": "d4bacb5bdb47196e2cbf6cec16c8235e8c0e1ae5"
             },
             "require": {
-                "composer/installers": "~1.0",
-                "humanmade/mercator": "~1.0"
+                "composer/installers": "~1.0 || ~2.0",
+                "humanmade/mercator": "~1.0 || dev-master"
             },
             "default-branch": true,
             "type": "wordpress-muplugin",
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-2.0+"
             ],
@@ -234,11 +221,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "support": {
-                "issues": "https://github.com/humanmade/Mercator-GUI/issues",
-                "source": "https://github.com/humanmade/Mercator-GUI/tree/master"
-            },
-            "time": "2017-06-13T08:58:40+00:00"
+            "time": "2023-08-22T09:34:47+00:00"
         },
         {
             "name": "koodimonni/composer-dropin-installer",
