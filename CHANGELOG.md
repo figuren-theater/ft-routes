@@ -2,7 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/figuren-theater/ft-routes/compare/1.1.1...HEAD)
+## [Unreleased](https://github.com/figuren-theater/ft-routes/compare/1.1.2...HEAD)
+
+## [1.1.2](https://github.com/figuren-theater/ft-routes/compare/1.1.1...1.1.2) - 2023-09-02
+
+### 5 dev dependency updates ([#11](https://github.com/figuren-theater/ft-routes/pull/11))
+
+- Upgrading phpstan/phpstan (1.10.29 => 1.10.32): Extracting archive
+- Upgrading symfony/polyfill-php73 (v1.27.0 => v1.28.0): Extracting archive
+- Upgrading figuren-theater/phpstan (1.1.1 => 1.1.2): Extracting archive
+- Upgrading figuren-theater/coding-standards (0.3.2 => 0.3.3): Extracting archive
+- Upgrading figuren-theater/code-quality (0.6.6 => 0.7.0): Extracting archive
 
 ## [1.1.1](https://github.com/figuren-theater/ft-routes/compare/1.1.0...1.1.1) - 2023-09-01
 
