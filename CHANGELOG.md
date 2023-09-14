@@ -2,13 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/figuren-theater/ft-routes/compare/1.1.4...HEAD)
-
-## [1.1.4](https://github.com/figuren-theater/ft-routes/compare/1.1.3...1.1.4) - 2024-02-10
-
-### 🐛 Fixed
-
-- Migrate 'Site Health Check' related code to 'ft-maintenance' ([#17](https://github.com/figuren-theater/ft-routes/pull/17))
+## [Unreleased](https://github.com/figuren-theater/ft-routes/compare/1.1.3...HEAD)
 
 ## [1.1.3](https://github.com/figuren-theater/ft-routes/compare/1.1.2...1.1.3) - 2023-09-14
 
