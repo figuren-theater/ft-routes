@@ -17,7 +17,7 @@ use function apply_filters;
  *
  * @return void
  */
-function register() :void {
+function register(): void {
 
 	$default_settings = [
 		'enabled' => true, // Needs to be set.

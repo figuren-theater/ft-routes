@@ -17,10 +17,9 @@ use function remove_action;
  *
  * @return void
  */
-function bootstrap() :void {
+function bootstrap(): void {
 
 	add_action( 'init', __NAMESPACE__ . '\\load', 0 );
-
 }
 
 /**
@@ -28,7 +27,7 @@ function bootstrap() :void {
  *
  * @return void
  */
-function load() :void {
+function load(): void {
 
 	// Disable some endpoints for unauthenticated users.
 	add_filter( 'rest_endpoints', __NAMESPACE__ . '\\disable_default_endpoints', 1000 );
@@ -77,25 +76,25 @@ function load() :void {
  *
  * ```
  * add_filter( 'rest_authentication_errors', function( $result ) {
- * 	// If a previous authentication check was applied,
- * 	// pass that result along without modification.
- * 	if ( true === $result || is_wp_error( $result ) ) {
- * 		return $result;
- * 	}
+ *  // If a previous authentication check was applied,
+ *  // pass that result along without modification.
+ *  if ( true === $result || is_wp_error( $result ) ) {
+ *      return $result;
+ *  }
  *
- * 	// No authentication has been performed yet.
- * 	// Return an error if user is not logged in.
- * 	if ( ! is_user_logged_in() ) {
- * 		return new WP_Error(
- * 			'rest_not_logged_in',
- * 			__( 'You are not currently logged in.' ),
- * 			array( 'status' => 401 )
- * 		);
- * 	}
+ *  // No authentication has been performed yet.
+ *  // Return an error if user is not logged in.
+ *  if ( ! is_user_logged_in() ) {
+ *      return new WP_Error(
+ *          'rest_not_logged_in',
+ *          __( 'You are not currently logged in.' ),
+ *          array( 'status' => 401 )
+ *      );
+ *  }
  *
- * 	// Our custom authentication check should have no effect
- * 	// on logged-in requests
- * 	return $result;
+ *  // Our custom authentication check should have no effect
+ *  // on logged-in requests
+ *  return $result;
  * });
  * ```
 */
@@ -112,7 +111,7 @@ function load() :void {
  *
  * @return array<string, mixed> $endpoints
  */
-function disable_default_endpoints( array $endpoints ) :array {
+function disable_default_endpoints( array $endpoints ): array {
 
 	if ( is_user_logged_in() ) {
 		return $endpoints;
@@ -236,7 +235,7 @@ function disable_default_endpoints( array $endpoints ) :array {
 
 	$endpoints = array_filter(
 		$endpoints,
-		function( $k ) use ( $endpoints_to_remove ) {
+		function ( $k ) use ( $endpoints_to_remove ) {
 
 			// Reduce keys.
 			$_k = explode( '/(?P', $k );
