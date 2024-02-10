@@ -195,9 +195,6 @@ function disable_default_endpoints( array $endpoints ) :array {
 
 		'/wp/v2/ft_product',
 
-		'/wp-site-health/v1/tests',
-		'/wp-site-health/v1/directory-sizes',
-
 		'/wp-block-editor/v1',
 		'/wp-block-editor/v1/url-details',
 		'/wp-block-editor/v1/export',
