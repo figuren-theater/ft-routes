@@ -16,10 +16,10 @@ use function add_filter;
  *
  * @return void
  */
-function bootstrap() :void {
+function bootstrap(): void {
 
 	// Fix network admin URL to include the "/wp/" base.
-	add_filter( 'network_site_url', __NAMESPACE__ . '\\network_site_url_incl_wp', 10, 3 );
+	add_filter( 'network_site_url', __NAMESPACE__ . '\\network_site_url_incl_wp', 10 );
 }
 
 /**
@@ -30,13 +30,9 @@ function bootstrap() :void {
  * @see https://core.trac.wordpress.org/ticket/23221
  * @author Daniel Bachhuber
  *
- * @param string      $url    The complete network site URL including scheme and path.
- * @param string      $path   Path relative to the network site URL. Blank string if
- *                            no path is specified.
- * @param string|null $scheme Scheme to give the URL context. Accepts 'http', 'https',
- *                            'relative' or null.
+ * @param string $url    The complete network site URL including scheme and path.
  */
-function network_site_url_incl_wp( string $url, string $path, string|null $scheme ) : string {
+function network_site_url_incl_wp( string $url ): string {
 
 	$urls_to_fix = [
 		'/wp-admin/network/',

@@ -41,7 +41,7 @@ function register(): void {
  *
  * @return void
  */
-function bootstrap() :void {
+function bootstrap(): void {
 
 	add_action( 'init', __NAMESPACE__ . '\\set_rewrite_bases', 0 );
 
@@ -60,7 +60,7 @@ function bootstrap() :void {
  *
  * @global WP_Rewrite $wp_rewrite WordPress rewrite component.
  */
-function set_rewrite_bases() : void {
+function set_rewrite_bases(): void {
 
 	/**
 	 * Replace default rewrite bases esp. for german-speaking websites.
@@ -79,7 +79,7 @@ function set_rewrite_bases() : void {
 	);
 
 	array_map(
-		function( $rr_prop, $ft_rr_value ) : void {
+		function ( $rr_prop, $ft_rr_value ): void {
 			global $wp_rewrite;
 			$wp_rewrite->$rr_prop = $ft_rr_value;
 		},
@@ -87,5 +87,3 @@ function set_rewrite_bases() : void {
 		$ft_rr
 	);
 }
-
-

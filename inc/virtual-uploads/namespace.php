@@ -9,6 +9,8 @@ namespace Figuren_Theater\Routes\Virtual_Uploads;
 
 use ABSPATH;
 use FT_ROOT_DIR;
+use Mercator;
+use WP_CONTENT_DIR;
 use function add_action;
 use function add_filter;
 use function apply_filters;
@@ -20,8 +22,6 @@ use function insert_with_markers;
 use function is_super_admin;
 use function is_wp_error;
 use function wp_list_pluck;
-use Mercator;
-use WP_CONTENT_DIR;
 
 /**
  * Name of the virtual uploads folder per domain.
@@ -45,7 +45,7 @@ const FOLDER = '__media';
  *
  * @return void
  */
-function bootstrap() :void {
+function bootstrap(): void {
 
 	add_action( 'init', __NAMESPACE__ . '\\load', 0 );
 }
@@ -80,7 +80,7 @@ function bootstrap() :void {
  *
  * @return void
  */
-function load() :void {
+function load(): void {
 	/*
 	 * filter (visible) URL path from
 	 *    assets.figuren.theater/uploads/site/(ID)/2022/03/some-image.jpg
@@ -113,12 +113,11 @@ function load() :void {
 	];
 
 	array_map(
-		function( string $action ) : void {
+		function ( string $action ): void {
 			add_action( $action, __NAMESPACE__ . '\\update_htaccess', 910 );
 		},
 		$_action_hooks
 	);
-
 }
 
 /**
@@ -154,7 +153,7 @@ function load() :void {
  *
  * @return array<mixed>  Updated array of information about the upload directory.
  */
-function filter__upload_dir( array $upload_dir ) :array {
+function filter__upload_dir( array $upload_dir ): array {
 	// For some unresearched reasons,
 	// the old 'blogs.dir' 'dropped in' sometimes,
 	// so remove it.
@@ -183,7 +182,7 @@ function filter__upload_dir( array $upload_dir ) :array {
  *
  * @return void
  */
-function update_htaccess() :void {
+function update_htaccess(): void {
 
 	if ( ! is_super_admin() ) {
 		return;
@@ -227,7 +226,7 @@ function update_htaccess() :void {
  *
  * @return bool             Allowed to write to .htaccess?
  */
-function can_update_htaccess( string $htaccess ) : bool {
+function can_update_htaccess( string $htaccess ): bool {
 
 	global $wp_rewrite;
 
@@ -265,7 +264,7 @@ function can_update_htaccess( string $htaccess ) : bool {
  *
  * @return  array<string>               Unchanged, but un-localised default text.
  */
-function htaccess_instructions( array $instructions, string $marker ) : array {
+function htaccess_instructions( array $instructions, string $marker ): array {
 	return [
 		'#----------------------------------------------------------------------',
 		'# Handle upload_url redirects with custom URLs',
@@ -301,7 +300,7 @@ function htaccess_instructions( array $instructions, string $marker ) : array {
  *
  * @return string
  */
-function generate_htaccess_rules() : string {
+function generate_htaccess_rules(): string {
 
 	$args = [
 		'orderby'       => 'path_length',
@@ -354,7 +353,7 @@ function generate_htaccess_rules() : string {
  * @param string $domain  The domain for which the rule is generated.
  * @return string The generated domain rule.
  */
-function generate_domain_rule( int $site_id, string $domain ) : string {
+function generate_domain_rule( int $site_id, string $domain ): string {
 	$mappings = Mercator\Mapping::get_by_site( $site_id );
 	$rules    = '';
 
@@ -392,7 +391,7 @@ function generate_domain_rule( int $site_id, string $domain ) : string {
  *
  * @return string The masked URL.
  */
-function _mask( string $url ) : string {
+function _mask( string $url ): string {
 	// Convert URL to an array by splitting it at each dot.
 	$_url = explode( '.', $url );
 
@@ -417,7 +416,7 @@ function _mask( string $url ) : string {
  *
  * @return string|bool The subdirectory path if it exists, otherwise false.
  */
-function _is_subdir_install( string $url ) : string|bool {
+function _is_subdir_install( string $url ): string|bool {
 	// Convert URL to an array by splitting it at each dot.
 	$_url = explode( '.', $url );
 
@@ -434,11 +433,3 @@ function _is_subdir_install( string $url ) : string|bool {
 	// If no subdirectory is found, return false.
 	return false;
 }
-
-
-
-
-
-
-
-

@@ -61,10 +61,10 @@
 	"config": {
 		"allow-plugins": {
 			"composer/installers": true,
-			"koodimonni/composer-dropin-installer": true,
-			"phpstan/extension-installer": true,
 			"dealerdirect/phpcodesniffer-composer-installer": true,
-			"ergebnis/composer-normalize": true
+			"ergebnis/composer-normalize": true,
+			"koodimonni/composer-dropin-installer": true,
+			"phpstan/extension-installer": true
 		}
 	},
 	"extra": {
