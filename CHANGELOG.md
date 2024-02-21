@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/figuren-theater/ft-routes/compare/1.1.4...HEAD)
+## [Unreleased](https://github.com/figuren-theater/ft-routes/compare/1.1.5...HEAD)
+
+## [1.1.5](https://github.com/figuren-theater/ft-routes/compare/1.1.4...1.1.5) - 2024-02-21
+
+### Dependency Updates & Maintenance
+
+- Upgrading figuren-theater/code-quality (0.7.1 => 1.1.1) ([#18](https://github.com/figuren-theater/ft-routes/pull/18))
 
 ## [1.1.4](https://github.com/figuren-theater/ft-routes/compare/1.1.3...1.1.4) - 2024-02-10
 
