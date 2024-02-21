@@ -235,29 +235,41 @@ function disable_default_endpoints( array $endpoints ): array {
 
 	$endpoints = array_filter(
 		$endpoints,
-		function ( $k ) use ( $endpoints_to_remove ) {
+		function ( $key ) use ( $endpoints_to_remove ) {
 
 			// Reduce keys.
-			$_k = explode( '/(?P', $k );
-			$k  = $_k[0];
-			// Our exclusion list is max. 3 levels deep
-			// so we have to make sure
-			// the keys to compare against
-			// match this length at maximum.
-			$_ks    = explode( '/', $k );
-			$_count = count( $_ks );
-
-			// With 5 or more parts,
-			// we had 4 or more slashes.
-			if ( 4 < $_count ) {
-				$k = join( '/', array_slice( $_ks, 0, 4 ) );
-			}
+			$key = reduce_endpoint_keys( $key );
 
 			$_ep = array_flip( $endpoints_to_remove );
-			return ! isset( $_ep[ $k ] );
+			return ! isset( $_ep[ $key ] );
 		},
 		ARRAY_FILTER_USE_KEY
 	);
 
 	return $endpoints;
+}
+
+/**
+ * Reduce set of real, full endpoints to the parts,
+ * that allow us to match our enpoints to remove syntax.
+ *
+ * @param  string $key Real, full endpoints URL.
+ *
+ * @return string      Stripped down to endpoint end.
+ */
+function reduce_endpoint_keys( string $key ): string {
+	$_k  = explode( '/(?P', $key );
+	$key = $_k[0];
+	// Our exclusion list is max. 3 levels deep
+	// so we have to make sure
+	// the keys to compare against
+	// match this length at maximum.
+	$_ks = explode( '/', $key );
+
+	// With 5 or more parts,
+	// we had 4 or more slashes.
+	if ( 4 < count( $_ks ) ) {
+		$key = join( '/', array_slice( $_ks, 0, 4 ) );
+	}
+	return $key;
 }

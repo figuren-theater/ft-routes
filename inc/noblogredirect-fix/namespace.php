@@ -7,9 +7,8 @@
 
 namespace Figuren_Theater\Routes\Noblogredirect_Fix;
 
-use function remove_action;
-
 use NOBLOGREDIRECT;
+use function remove_action;
 
 /**
  * Now those 404 pages are redirecting to the 404 page not found template for your theme
@@ -21,7 +20,7 @@ use NOBLOGREDIRECT;
  *
  * @return void
  */
-function bootstrap() :void {
+function bootstrap(): void {
 
 	if ( defined( 'NOBLOGREDIRECT' ) && NOBLOGREDIRECT ) {
 		/**
@@ -32,4 +31,3 @@ function bootstrap() :void {
 		remove_action( 'template_redirect', 'maybe_redirect_404' );
 	}
 }
-
