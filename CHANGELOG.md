@@ -2,7 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/figuren-theater/ft-routes/compare/1.1.5...HEAD)
+## [Unreleased](https://github.com/figuren-theater/ft-routes/compare/1.1.7...HEAD)
+
+## [1.1.7](https://github.com/figuren-theater/ft-routes/compare/1.1.5...1.1.7) - 2026-02-04
+
+* Fix version constraints by @carstingaxion in https://github.com/figuren-theater/ft-routes/pull/19
 
 ## [1.1.5](https://github.com/figuren-theater/ft-routes/compare/1.1.4...1.1.5) - 2024-02-21
 
